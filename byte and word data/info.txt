@@ -1,0 +1,20 @@
+for working with 32 bits
+eax, ebx, ecx, edx
+
+for working with 16 bits
+ax, bx, cx, dx
+
+for working with 8 bits
+al, ah, bl, bh, cl, ch, dl, dh
+
+by storing bytes next to each other we can use the memory more
+efficiently, in order to do so we must choose the right type of
+register we are referencing to
+
+
+when working with smaller numbers we must use the lower register
+i.e, al, bl, cl, dl, which will lead to take less space overall
+
+if we store the smaller values in the higher registers ah, bh, etc,
+the value store in them will be alright but the overall register i.e,
+eax, ebx, etc will be populated with a lot of bytes 
