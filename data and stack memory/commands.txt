@@ -1,0 +1,16 @@
+touch data.s
+edit the file
+nasm -f elf -o data.o data's
+ld -m elf_i386 -o data data.o
+./data
+echo $?
+gdb data
+layout asm
+
+
+inside gdb:
+break _start
+run
+stepi
+stepi 
+info registers ebx
