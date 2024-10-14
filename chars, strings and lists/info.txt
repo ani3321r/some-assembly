@@ -1,0 +1,9 @@
+to make gdb intel syntax to maintain consistency
+echo "set disassembly-flavor intel" > ~/.gdbinit
+
+when a list is being allocated in the memory, by default it
+doesn't know where is the end of the list so we have to demarcate
+the end of the list using null terminater
+
+in case of strings the same is required but it is easier to do so
+in this case
