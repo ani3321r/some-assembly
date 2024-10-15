@@ -1,0 +1,13 @@
+bss is used for reserving space in the memory
+DB - Define byte
+RESB - reserved byte
+
+while using resb we can't directly initialize a data to the memory 
+space, first we have to store it in a register and then move the 
+register to the memory space
+
+when add +1 to num we are moving an extra byte ahead in the 
+memory
+
+using the DUP keyword we are initializing the value repeteadly
+i.e., here we are taking three instances of the value 2
