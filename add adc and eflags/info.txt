@@ -1,0 +1,20 @@
+
+the eflags register is a set of bits representing flags for each bit,
+the flags represent the operation that just run
+
+inside of eflags register
+CF - carry flag
+PF - parity flag (determines odd or even, sets 1 for odd)
+AF - auxiliary carry flag (carry or borrow of 3rd bit)
+ZF - zero flag
+IF - interrupt enable flag
+
+*change in parity can indicate an issue in transmitting data
+
+operations
+ADD - adds two value
+ADC - adds two values with carry
+
+
+in order to check the carry value we are taking the higher 8bit
+using the ah
