@@ -1,0 +1,8 @@
+the sub operation substracts two values, it can give
++ve as well as -ve results and can store in registers
+
+the carry flag of the eflags can carry as well as borrow
+so in case of subtraction the carry flag is needed
+
+and in order to know if the value is -ve or +ve
+we have signed flags in the eflags 
