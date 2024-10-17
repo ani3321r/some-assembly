@@ -1,0 +1,10 @@
+MUL - for multiplication of unsigned values
+IMUL - for multiplication of signed values
+
+the "a" register is the default for multiplication
+so we don't have to give two operands for MUL instruction
+like in case of add or sub. The mul takes the value in the register
+given and multiplies to the value in "a" register.
+
+when we multiply a very big value, the al register expands to
+ax register to fit the value(only happens in case of unsigned version)
