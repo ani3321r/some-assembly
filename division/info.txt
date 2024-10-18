@@ -1,0 +1,8 @@
+Like in case of multiplication we have to only specify
+one parameter and the "a" register is taken as default.
+
+Also the reaminder of the division is outputed to the "d"
+register.
+
+And like in case of multiplication for signed operation 
+the idiv is used.
