@@ -1,0 +1,17 @@
+Shift is a very intersting operator used to shift a bit by left(SHL)
+ot right(SHR)
+
+Basically when we are shifting a bit by the right we are dividing the value
+by 2, accordingly if we shift 2 times we are basically diving be 2 two times
+
+0010 -> 0001 (right shift once), 2 -> 1 (in decimal)
+
+0100 -> 0001 (right shift twice), 4 -> 1 (in decimal)
+
+
+Similarly the shift left gives multiplication by 2
+
+And for signed bits we use "SAR" and "SAL"
+
+It is only for the purpose of doing multiplication and division
+in a very fast way instead of applying MUL and DIV
