@@ -1,0 +1,11 @@
+When all the operations are done, at the end all the bits of registers are
+affected by it, suppose in this example we are modifying the eax but
+the al register give out the same value at the end of the execution,
+which is a problem.
+
+In order to solve this issue we are gonna use a mask, in this process
+we are gonna use the "AND" operator with all the other bits who are not
+required in this operation, by doing this the other bits remain 0 and
+we get appropriate output.
+
+We generally use hex here because its easier to apply the "AND" operator.
