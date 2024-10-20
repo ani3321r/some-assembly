@@ -1,0 +1,20 @@
+When we compare the value in two registers using the "CMP"
+internally two registers are subtracted and the result is being
+set to the eflags register, it basically checks if the value is
+greater than less than or eqauals to zero.
+
+Then we use the jumps to know weather the value is lesser,
+greater, etc. For that we use "JL" operation, if its executed
+value is moved to ecx for the program gets executed using the
+"JMP"
+
+JL -> only if the result is less
+JLE -> jump less than or equal to
+JE -> jump equals
+JNE -> jump not equals
+JG -> jump greater
+JGE -> jump greater than or equal to
+JZ -> jump if result is zero, basically "JE"
+JNZ -> jump if result is non zero
+
+JMP -> always executes no matter what
