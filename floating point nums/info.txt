@@ -1,0 +1,15 @@
+DD -> Define Double(32 bits size)
+MOVSS -> SS stands for Scaler Single precision
+
+For moving these values we use special registers like xmm
+which go from 0 to 15(e.g : xmm0, xmm1...xmm15)
+
+To get the value in the register in xmm0 in gdb:
+p $xmm0.v4_float[0]
+
+The IEEE floating point notion have some drawbacks that
+it doesn't have enough precision to show decimal values 
+properly.
+
+That is why we must have precautions while using floating
+point operation in low level languages.
