@@ -1,0 +1,7 @@
+UCOMISS -> unordered compare scaler single precision
+used to compare floating point nums
+
+JB -> Jump below
+JA -> Jump above
+Both hava the equal variants JBE, JAE
+These are used generally for the floating point conditional jumps
