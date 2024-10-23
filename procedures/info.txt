@@ -1,0 +1,12 @@
+RET -> used to return value from a procedure
+CALL -> used to call a procedure
+
+esp -> register of the stack pointer
+
+In the gdb after steping into the addTwo function, we are gonna
+check the value stored in the esp register, what we can infer from
+the address is that, it is taking the value from stack and poping it
+off to the program counter.
+
+Usually this is how exploits are made by taking control over the 
+return address
