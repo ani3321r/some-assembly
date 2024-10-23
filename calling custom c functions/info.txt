@@ -1,0 +1,9 @@
+when the value is returned the value is being stored in the register
+eax.
+
+when running a external function we need to link the file in the
+command for the compilation, such as:
+gcc -no-pie -m32 filename.o filename.c -o filename
+
+After compiling, running the file we get only the output in the
+printf statement, to get the return value we need to echo out.
