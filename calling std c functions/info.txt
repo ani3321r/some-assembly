@@ -1,0 +1,17 @@
+We call external functions using the "extern" keyword.
+
+Instead of "start" we use "main" while calling c functions
+because it is recognised by the gcc.
+
+10 is the newline character, and 0 is the null terminater for
+the string, also we use "%s". 
+
+The "PUSH" function will take the data and push it into the stack..
+
+In the main function we are pushing the two parameters of printf
+function and then calling the printf function. After that we are
+pushing the exit code and calling exit
+
+To compile the ".o" file we have to give some flags in the gcc
+command such as:
+gcc -no-pie -m32 filename.o -o filename
