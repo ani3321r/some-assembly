@@ -1,0 +1,9 @@
+The registers are very precisous so we need to keep data in the 
+stack.
+
+The ebp is considered as a base pointer register, below it everything
+is considered as the part of a function. we move ebp the value of esp
+so that we can do every action refereing to the ebp.
+
+Before returning we must pop the value of ebp so that the stack
+pointers returns back to the "return value".
