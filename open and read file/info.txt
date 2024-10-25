@@ -1,0 +1,15 @@
+In the data section we are storing the filename then we are
+reserving some bytes in the memory to read the file in the
+bss section.
+
+sys_open code -> 5
+we are storing 5 in eax to give the instruction of opening
+the file, then we are storing the filename in ebx and the flag
+in ecx.
+
+sys_read code -> 3
+Here we are moving the value of eax to ebx, then we are storing
+3 in eax to give the read instruction, then we are storing the
+buffer in the ecx and the size of the memory to read in the edx.
+
+Then to finally exit the program, the final portion is added.
