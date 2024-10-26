@@ -1,0 +1,22 @@
+Here we are reserving just 10 bytes as we are trying to read only
+one line of the whole text file.
+
+1st part:
+In the first part of the main we are opening the file as usual using
+the syscode "5".
+
+2nd part:
+syscode of lseek -> 19
+
+SEEK_SET -> from the front of the file(front to end) -> 0
+SEEK_CURR -> current location of the offset bytes -> 1
+SEEK_END -> from the end of the file(end to front) -> 2
+
+In the eax we store the syscode, ecx the number of bytes to seek,
+and in edx the type of seek(0,1,2)
+
+3rd part:
+Here we are doing the usual read with syscode 3
+
+Therefore the main work of lseek is to move to a particular
+location of the file before reading.
