@@ -1,0 +1,25 @@
+src file:
+The "ORG" command tells the assembler to address everything
+relative to the address given.
+
+Every x86 processer 64bit, 32 bit always starts in a 16 bit
+architechture in the start for backward compatibility.
+
+The "HLT" command pauses the cpu until a interupt is made to
+the system
+
+Then we are creating a infinite loop using "JMP" so that the
+it doesn't goes out of halt 
+
+The "TIMES" operation just repeats the thing the number of times,
+as we need the last two bytes of 512 in the memory to include the
+end sequence we are subtracting the total memory needed in the whole
+operation from 510 and repeating to go to end sequence
+
+
+MAKEFIlE:
+Here we are making a image and a bin file using the main asm
+file in order to run the bootloader and we are finally using 
+qemu to test it using the command:
+make
+qemu-system-i386 -fda build/main.img
