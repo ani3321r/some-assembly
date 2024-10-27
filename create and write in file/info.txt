@@ -1,0 +1,21 @@
+Part 1:
+We are moving 5 to eax to give the open instruction. Then we are
+moving the pathname to ebx as usual.
+
+In the ecx we are combining two instructions but using bitwise
+addition, create is 0100 in octal and write is 01 in octal, we are
+adding them and getting 0101 which we represent as 101o in the command.
+
+In the edx register we are storing the permmission for the file
+Read -> 400,
+Write -> 200,
+Execute -> 100
+We are gonna "or" these values meaning add them and get 700o.
+
+Part 2:
+In the second part of the main we are storing 4 in ebx to give the
+write instruction, then we are giving the buffer to write in the ecx
+register and the number of bytes in the edx.
+
+In the toWrite part we end using [0AH,0DH,"$"], it indicates a newline
+character in assembly.
