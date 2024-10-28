@@ -24,6 +24,7 @@ qemu to test it using the command:
 make
 qemu-system-i386 -fda build/main.img
 
+/**************************************************************/
 
 For printing a message in bios:
 ds -> start address of the data segment
@@ -40,3 +41,36 @@ then we are jumping to done_print
 
 0x0E -> Code used to print something to the screen
 0x10 -> Video interupt
+
+/***********************************************************/
+
+In the creation of a FAT12 Disk:
+Here we are segregating the kernal with the bootloader first
+having two new sections in the makefile for building both seperately.
+
+Then to create a FAT12 Disk the commands in the floppy sections is
+used, first of all we are building using the kernal and bootloader
+then we are allocating 512byte block size 2880 times 1.4mb floppy
+just filled with zeros.
+Then mkfs(make filesystem) is used.
+
+Basically in the kernal and bootloader files we have the same code
+as the src/main.asm, but we have to do some changes in the header of
+the bootloader/boot.asm file to be able to compatible with the FAT12.
+
+Output after make:
+nasm src/bootloader/boot.asm -f bin -o build/bootloader.bin
+nasm src/kernal/main.asm -f bin -o build/kernal.bin
+dd if=/dev/zero of=build/main.img bs=512 count=2880
+2880+0 records in
+2880+0 records out
+1474560 bytes (1.5 MB, 1.4 MiB) copied, 0.0050206 s, 294 MB/s
+mkfs.fat -F 12 -n "BASICOS" build/main.img
+mkfs.fat 4.2 (2021-01-31)
+dd if=build/bootloader.bin of=build/main.img conv=notrunc
+1+0 records in
+1+0 records out
+512 bytes copied, 0.000100413 s, 5.1 MB/s
+mcopy -i build/main.img build/kernal.bin "::kernal.bin"
+
+/********************************************************/
