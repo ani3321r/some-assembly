@@ -23,3 +23,20 @@ file in order to run the bootloader and we are finally using
 qemu to test it using the command:
 make
 qemu-system-i386 -fda build/main.img
+
+
+For printing a message in bios:
+ds -> start address of the data segment
+es -> start address of the extra segment
+ss -> start address of the stack
+
+we are setting all to zero to get a consistent start point
+sp -> stack pointer
+LODSB -> loads single byte
+
+in the print_loop part we are OR'ing al,al so that when
+the string comes to an end returing 0, the loop will end
+then we are jumping to done_print
+
+0x0E -> Code used to print something to the screen
+0x10 -> Video interupt
