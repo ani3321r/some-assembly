@@ -74,3 +74,29 @@ dd if=build/bootloader.bin of=build/main.img conv=notrunc
 mcopy -i build/main.img build/kernal.bin "::kernal.bin"
 
 /********************************************************/
+
+Reading from disk in bios:
+The interupt(INT 13) is used for reading disk sectors. According to the
+INT 13 manual we are adding drive number, cylinder number, sector number,
+pointer to buffer etc in the main function, and then made a disk_read
+function to be called at the end of this portion.
+
+In the disk_read we are pushing all the required registers to the stack
+then calling the lba_to_chs to give the rest values of the INT 13.
+
+in order to check for the disk read we have to make the build image
+again and then open qemu in debug mode using:
+qemu-system-i386 -boot c -m 256 -hda build/main.img -s -S
+
+After that we have to open the hex editor(we are using jeex) to alter
+some data in the disk then use gdb.
+In gdb we have to first go to localhost:1234 which is default port for qemu
+using:
+target remote localhost:1234
+
+In gdb we need to break at *0x7c00 which is start of program(use br)
+we need to then continue and go upto the end of the last jump and break
+there and again continue, then we need to view the data in the register
+ebx, where the edited value will be found..
+
+/*********************************************************/

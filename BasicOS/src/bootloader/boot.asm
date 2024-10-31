@@ -32,12 +32,91 @@ main:
 	MOV ss,ax
 
 	MOV sp,0x7C00
+
+	MOV [ebr_drive_number], dl
+	MOV ax,1
+	MOV cl,1
+	MOV bx,0x7E00
+	call disk_read
+
 	MOV si,boot_msg
 	CALL print
 	HLT
 
 halt:
 	JMP halt
+
+lba_to_chs:
+	PUSH ax
+	PUSH dx
+
+	XOR dx,dx
+	DIV word[bdb_sectors_per_track] ;(LBA % sectors per track) + 1 <- sector
+	INC dx
+	MOV cx,dx
+
+	XOR dx,dx
+	;head: (LBA/sectors per track) % number of heads
+	MOV dh,dl
+	MOV ch,al
+	SHL ah,6
+	;cylinder: (LBA / sectors per track) / number of heads
+	OR CL,AH
+
+
+	POP ax
+	MOV dl,al
+	POP ax
+
+	RET
+
+disk_read:
+	PUSH ax
+	PUSH bx
+	PUSH cx
+	PUSH dx
+	PUSH di
+
+	call lba_to_chs
+
+	MOV ah,02h
+	MOV di,3 ;cnt
+
+retry:
+	STC
+	INT 13h
+	jnc doneRead
+	
+	call diskReset
+
+	DEC di
+	TEST di,di
+	JNZ retry
+
+failRead:
+	MOV si,read_faliure
+	CALL print
+	HLT
+	JMP halt
+
+diskReset:
+	pusha
+	MOV ah,0
+	STC
+	INT 13h
+	JC failRead
+	POPA
+	RET
+
+doneRead:
+	pop di
+	pop dx
+	pop cx
+	pop bx
+	pop ax
+
+	ret
+
 
 print:
 	PUSH si
@@ -62,6 +141,7 @@ done_print:
 	RET
 
 boot_msg: DB 'OS BOOTED', 0x0D, 0x0A, 0
+read_faliure DB 'failed to read disk', 0x0D, 0x0A, 0
 
 TIMES 510-($-$$) DB 0
 DW 0AA55h
