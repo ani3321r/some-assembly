@@ -100,3 +100,20 @@ there and again continue, then we need to view the data in the register
 ebx, where the edited value will be found..
 
 /*********************************************************/
+
+Loading kernel from disk:
+In this process we have to first add the kernal details in the footer
+section of the bootloader, the kernal load segment has the address
+of the pointer where the kernal will be starting from.
+
+Then after the main we have to define the logic of reading kernel
+in fat12, it mainly consists of 4 segments
+* reserved segement -> 1 sector
+* file allocation table -> 9*2 = 18 sectors
+* root directory
+* data
+
+In the foundKernel block the 1st MOV command has di as the beginning
+of the kernel and +26 is the offset cluster.
+
+/**********************************************************/
